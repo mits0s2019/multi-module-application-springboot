@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="app" />
         <module name="model" />
+        <module name="webService" />
         <module name="repository" />
         <module name="service" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="model" target="1.8" />
       <module name="repository" target="1.8" />
       <module name="service" target="1.8" />
+      <module name="webService" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -27,6 +29,7 @@
       <module name="model" options="-parameters" />
       <module name="repository" options="-parameters" />
       <module name="service" options="-parameters" />
+      <module name="webService" options="-parameters" />
     </option>
   </component>
 </project>
