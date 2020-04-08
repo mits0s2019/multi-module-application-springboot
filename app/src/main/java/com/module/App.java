@@ -1,20 +1,20 @@
 package com.module;
 
+import com.google.gson.Gson;
+
 import com.module.model.Email;
+import com.module.model.CoronaVirus;
 import com.module.service.EmailService;
 import com.module.service.UserService;
+import com.module.webService.api.CoronaApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import javax.annotation.PostConstruct;
 
 
 @SpringBootApplication
@@ -23,15 +23,10 @@ import javax.annotation.PostConstruct;
 @EnableJpaRepositories(basePackages = {"com.module.*"})
 public class App  implements CommandLineRunner{
 
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    @Qualifier("emailService")
-    EmailService emailService;
 
     @Autowired
     EmailRemainder emailRemainder;
+
 
 
     public static void main(String[] args) {
@@ -42,7 +37,6 @@ public class App  implements CommandLineRunner{
     public void run(String... args) throws Exception {
 
 
-        System.out.println("main app");
-
+        new Thread(emailRemainder.newRunnable()).start();
     }
 }

@@ -43,6 +43,9 @@
     <orderEntry type="module" module-name="service" />
     <orderEntry type="module" module-name="repository" />
     <orderEntry type="module" module-name="model" />
+    <orderEntry type="module" module-name="webService" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.14.7" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.17.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.5" level="project" />

@@ -18,21 +18,20 @@ public class UserService {
     @Autowired
     UserRepo userRepo;
 
-//    @PostConstruct
-//    public void initUsers(){
-//        User user1=new User("mits0s200efta@hotmail.com");
-//        User user2=new User("aaaaa@bbb.com");
-//        user1.setEmails(Arrays.asList(new Email("dasda@dad.com","dada","dasds")));
-//
-//        userRepo.saveAll(Stream.of(user1,user2).collect(Collectors.toList()));
-//
-//
-//
-//    }
+    @PostConstruct
+    public void initUsers(){
+//        new User("mits0s200efta@hotmail.com")
+        userRepo.saveAll(Stream.of(new User("mits0s200efta@hotmail.com"),
+                                   new User("vasilispap2006@gmail.com"))
+                                           .collect(Collectors.toList()));
+    }
 
     public List<User> fetchUsers(){
         return userRepo.findAll();
     }
 
 
+    public void save(User user){
+        userRepo.save(user);
+    }
 }

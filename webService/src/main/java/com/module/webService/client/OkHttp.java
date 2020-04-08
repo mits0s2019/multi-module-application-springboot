@@ -17,7 +17,7 @@ public class OkHttp {
         Request request = new Request.Builder()
                 .url(url)
                 .get()
-                .addHeader("x-rapidapi-host", "community-open-weather-map.p.rapidapi.com")
+                .addHeader("x-rapidapi-host", "covid-19-data.p.rapidapi.com")
                 .addHeader("x-rapidapi-key", "1906a2b529mshdda175c220c23f1p1ea9ffjsne37101d1c044")
                 .build();
 

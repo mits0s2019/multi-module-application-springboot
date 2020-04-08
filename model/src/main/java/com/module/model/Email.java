@@ -2,36 +2,46 @@ package com.module.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
-@ToString
 @Entity
 public class Email {
 
     @Id @GeneratedValue
     @Column(name="email_id")
     private long emailId;
-    private String to;
     private String subject;
     private String text;
-    private String pathToAttachment;
-    @ManyToMany(mappedBy = "emails",fetch = FetchType.LAZY)
-    private List<User> users;
 
-    public Email(String to, String subject, String text) {
-        this.to = to;
+    @ManyToMany(cascade = { CascadeType.MERGE},fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "User_Email",
+            joinColumns = { @JoinColumn(name = "userId") },
+            inverseJoinColumns = { @JoinColumn(name = "emailId") }
+    )
+    private List<User> users=new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private CoronaVirus coronaVirus;
+
+
+    public Email(String subject, CoronaVirus coronaVirus) {
         this.subject = subject;
-        this.text = text;
+        this.coronaVirus = coronaVirus;
     }
 
-    public String getTo() {
-        return to;
+    public Email(String subject) {
+        this.subject = subject;
     }
+
+    public CoronaVirus getCoronaVirus() {
+        return coronaVirus;
+    }
+
 
     public String getSubject() {
         return subject;
@@ -39,10 +49,6 @@ public class Email {
 
     public String getText() {
         return text;
-    }
-
-    public String getPathToAttachment() {
-        return pathToAttachment;
     }
 
     public long getEmailId() {
@@ -53,9 +59,6 @@ public class Email {
         this.emailId = emailId;
     }
 
-    public void setTo(String to) {
-        this.to = to;
-    }
 
     public void setSubject(String subject) {
         this.subject = subject;
@@ -71,5 +74,21 @@ public class Email {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public void setCoronaVirus(CoronaVirus coronaVirus) {
+        this.coronaVirus = coronaVirus;
+    }
+
+    public void setUsers(User user) {
+
+        users.add(user);
+    }
+
+    @Override
+    public String toString() {
+        return "Email{" +
+                "coronaVirus=" + coronaVirus +
+                '}';
     }
 }
