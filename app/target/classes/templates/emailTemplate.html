@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0;
+            font-size: 0.9em;
+            min-width: 400px;
+        }
+
+        .content .title {
+            background-color: #dc3545;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .content th,
+        .content td {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .content .categories {
+            background-color:rgb(78, 82, 78);
+            color: #ffffff;
+        }
+
+        .content tr {
+            background-color: rgb(206, 219, 206);
+        }
+
+        @media(max-width: 450px) {
+            .content {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 0 0;
+                font-size: 0.8em;
+                min-width: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<table class="content">
+    <thead>
+    <tr class="title">
+        <th colspan="5">Coronavirus Update</th>
+    </tr>
+    <tr class="categories">
+        <th>Date</th>
+        <th>Confirmed</th>
+        <th>Recovered</th>
+        <th>Critical</th>
+        <th>Deaths</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row"><span th:text="${#dates.format(date, 'dd-MM-yyyy')}"></span></th>
+        <td><span th:text="${corona.confirmed}"></span></td>
+        <td><span th:text="${corona.recovered}"></span></td>
+        <td><span th:text="${corona.critical}"></span></td>
+        <td><span th:text="${corona.deaths}"></span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+</html>

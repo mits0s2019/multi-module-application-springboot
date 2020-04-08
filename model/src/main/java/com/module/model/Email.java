@@ -20,8 +20,8 @@ public class Email {
     @ManyToMany(cascade = { CascadeType.MERGE},fetch = FetchType.EAGER)
     @JoinTable(
             name = "User_Email",
-            joinColumns = { @JoinColumn(name = "userId") },
-            inverseJoinColumns = { @JoinColumn(name = "emailId") }
+            joinColumns = { @JoinColumn(name = "emailId") },
+            inverseJoinColumns = { @JoinColumn(name = "userId") }
     )
     private List<User> users=new ArrayList<>();
 

@@ -24,6 +24,8 @@ public class EmailRemainder {
     EmailService emailService;
     @Autowired
     CoronaApi coronaApi;
+    @Autowired
+    MailClient mailClient;
 
     @Bean
     @Scope("prototype")
@@ -42,25 +44,20 @@ public class EmailRemainder {
                         email.setCoronaVirus(coronaVirusArray[0]);
 
                         List<User> users = userService.fetchUsers();
-
                         users.stream().forEach(user -> {
 
                             email.setUsers(user);
 
-                            boolean sent = emailService.sendMessageAsHtml(user.getEmailAdress(),
-                                                                          email.getSubject(),
-                                                                          email.getCoronaVirus());
-                            if (sent) {
+                             mailClient.prepareAndSend(user.getEmailAdress(),email);
 
                                 emailService.save(email);
 
-                            }
                         });
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     try {
-                        Thread.sleep(100000);
+                        Thread.sleep(1000000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
