@@ -1,19 +1,7 @@
 
   
 <body>
-  <style>
-    img {
-  float: left;
-  clear: left;
 
-}
-.add_padding{
-  padding: right 11; px;
-}
-.list{
-  font-size: 20px;
-}
-  </style>
 <h1>Multi-module-application</h1>
 <hr>
 <div class="add_padding">
