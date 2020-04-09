@@ -18,13 +18,7 @@ public class UserService {
     @Autowired
     UserRepo userRepo;
 
-    @PostConstruct
-    public void initUsers(){
-//        new User("mits0s200efta@hotmail.com")
-        userRepo.saveAll(Stream.of(new User("mits0s200efta@hotmail.com"),
-                new User("dim.papoutsis.1987@gmail.com"))
-                                           .collect(Collectors.toList()));
-    }
+
 
     public List<User> fetchUsers(){
         return userRepo.findAll();
