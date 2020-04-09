@@ -1,4 +1,7 @@
- <style>
+
+  
+<body>
+  <style>
     img {
   float: left;
   clear: left;
@@ -11,8 +14,6 @@
   font-size: 20px;
 }
   </style>
-  
-<body>
 <h1>Multi-module-application</h1>
 <hr>
 <div class="add_padding">
